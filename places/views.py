@@ -1,13 +1,14 @@
-from django.db.models import QuerySet
-from rest_framework import viewsets
-from django.core.exceptions import ValidationError
 from django.contrib.gis.geos import Point
+from django.core.exceptions import ValidationError
+from django.db.models import QuerySet
+from drf_spectacular.types import OpenApiTypes
 from drf_spectacular.utils import (
     extend_schema,
     OpenApiParameter,
     extend_schema_view,
 )
-from drf_spectacular.types import OpenApiTypes
+from rest_framework import viewsets
+
 from places.models import Place
 from places.serializers import PlaceSerializer
 
