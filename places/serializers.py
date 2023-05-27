@@ -1,4 +1,4 @@
-from rest_framework import serializers
+from rest_framework_gis import serializers
 
 from places.models import Place
 
