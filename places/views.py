@@ -2,7 +2,12 @@ from django.db.models import QuerySet
 from rest_framework import viewsets
 from django.core.exceptions import ValidationError
 from django.contrib.gis.geos import Point
-
+from drf_spectacular.utils import (
+    extend_schema,
+    OpenApiParameter,
+    extend_schema_view,
+)
+from drf_spectacular.types import OpenApiTypes
 from places.models import Place
 from places.serializers import PlaceSerializer
 
@@ -17,6 +22,20 @@ def params_to_point(string: str) -> Point:
     return Point(coordinates)
 
 
+@extend_schema_view(
+    list=extend_schema(description="Returns list of all places"),
+    retrieve=extend_schema(
+        description="Returns place detail information by id"
+    ),
+    update=extend_schema(
+        description="Updates all information about place by id"
+    ),
+    partial_update=extend_schema(
+        description="Updates partial information about place by id"
+    ),
+    create=extend_schema(description="Creates place"),
+    destroy=extend_schema(description="Deletes place by id"),
+)
 class PlaceViewSet(viewsets.ModelViewSet):
     queryset = Place.objects.all()
     serializer_class = PlaceSerializer
@@ -31,13 +50,26 @@ class PlaceViewSet(viewsets.ModelViewSet):
         if coordinates:
             point = params_to_point(coordinates)
             min_distance = point.distance(queryset.first().geom)
-            nearest_place_ids = [queryset.first().id]
+            nearest_place_names = [queryset.first().name]
             for place in queryset.all():
                 if point.distance(place.geom) < min_distance:
                     min_distance = point.distance(place.geom)
-                    nearest_place_ids = [place.id]
+                    nearest_place_names = [place.name]
                 elif point.distance(place.geom) == min_distance:
-                    nearest_place_ids.append(place.id)
-            return queryset.filter(id__in=nearest_place_ids)
+                    nearest_place_names.append(place.name)
+            return queryset.filter(name__in=nearest_place_names)
 
         return queryset.all()
+
+    @extend_schema(
+        parameters=[
+            OpenApiParameter(
+                "coordinates",
+                type=OpenApiTypes.STR,
+                description="Search nearest places by coordinates "
+                "(ex. ?coordinates=12.34343434,23.1223343)",
+            ),
+        ]
+    )
+    def list(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
