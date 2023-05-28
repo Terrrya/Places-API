@@ -13,16 +13,6 @@ from places.models import Place
 from places.serializers import PlaceSerializer
 
 
-def params_to_point(string: str) -> Point:
-    """
-    Function get string with coordinates and transform it in Point
-    """
-    coordinates = list(map(float, tuple(string.split(","))))
-    if len(coordinates) != 2:
-        raise ValidationError({"coordinates": "coordinates incorrect"})
-    return Point(coordinates)
-
-
 @extend_schema_view(
     list=extend_schema(description="Returns list of all places"),
     retrieve=extend_schema(
@@ -41,6 +31,15 @@ class PlaceViewSet(viewsets.ModelViewSet):
     queryset = Place.objects.all()
     serializer_class = PlaceSerializer
 
+    def _params_to_point(self, string: str) -> Point:
+        """
+        Function get string with coordinates and transform it in Point
+        """
+        coordinates = list(map(float, tuple(string.split(","))))
+        if len(coordinates) != 2:
+            raise ValidationError({"coordinates": "coordinates incorrect"})
+        return Point(coordinates)
+
     def get_queryset(self) -> QuerySet:
         """
         Search for the nearest places with coordinates from the parameters
@@ -49,7 +48,7 @@ class PlaceViewSet(viewsets.ModelViewSet):
 
         coordinates = self.request.query_params.get("coordinates")
         if coordinates:
-            point = params_to_point(coordinates)
+            point = self._params_to_point(coordinates)
             min_distance = point.distance(queryset.first().geom)
             nearest_place_names = [queryset.first().name]
             for place in queryset.all():
