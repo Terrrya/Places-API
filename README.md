@@ -15,25 +15,6 @@ them all.
 ## Installing using GitHub
 <hr>
 
-## Run with Python
-
-Python3 should be installed
-
-```python
-git clone https://github.com/Terrrya/Library-service.git
-cd Library-service
-python3 -m venv venv
-source venv/bin/activate
-```
-Create in root directory of project and fill .env file as shown in .env_sample file
-
-```python
-pip install -r requirements.txt
-python manage.py migrate
-python manage.py runserver
-```
-Open in browser 127.0.0.1:8000/api/
-
 ## Run with docker
 <hr>
 
@@ -54,9 +35,8 @@ Open in browser 127.0.0.1:8000/api/
 ## Filling .env file
 <hr>
 
-To fill .env file you have to get API token of telegram bot and Stripe Secret API Token. 
-<br> https://core.telegram.org/bots/faq#how-do-i-create-a-bot can help you to get Telegram API token
-<br> https://stripe.com/docs/keys - can help you to get Stripe secret access key
+To fill .env file you have to get Django secret key, for example from https://djecrety.ir/ Also you can add settings
+for your database or use default settings:
 
 
 ## Getting access
