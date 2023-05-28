@@ -21,8 +21,8 @@ them all.
 Docker should be installed
 
 ```python
-git clone https://github.com/Terrrya/Library-service.git
-cd Library-service
+https://github.com/Terrrya/test-gis
+cd test-gis
 ```
 
 Create in root directory of project and fill .env file as shown in .env_sample file
