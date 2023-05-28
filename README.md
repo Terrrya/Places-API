@@ -40,13 +40,13 @@ To get Django secret key u can use https://djecrety.ir/
 Also you can add settings for your database or use default settings from .env_smple
 
 
-## Getting access
+## Getting admin access
 <hr>
 
 You can use following:
 - superuser:
   - Username: admin
-  - Password: 12345
+  - Password: admin12345
 
 Or create another one by yourself:
 - create user via Admin panel /admin/
