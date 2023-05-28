@@ -76,6 +76,7 @@ Or create another one by yourself:
 - via /api/doc/swagger/ --- Detail api documentation by swagger
 - via [POST] /api/places/ --- Add new place
 - via [GET] /api/places/ --- Places list
+- via [GET] /api/places/?coordinates=12.34,23.56 --- Places list nearest to coordinates = 12.34,23.56
 - via [GET] /api/places/pk/ --- Place detail information
 - via [PUT, PATCH] /api/places/pk/ --- Update place information
 - via [DELETE] /api/places/pk/ --- Delete place
