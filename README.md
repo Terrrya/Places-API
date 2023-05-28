@@ -21,7 +21,7 @@ them all.
 Docker should be installed
 
 ```python
-https://github.com/Terrrya/test-gis
+git clone https://github.com/Terrrya/test-gis
 cd test-gis
 ```
 
@@ -40,20 +40,20 @@ To get Django secret key u can use https://djecrety.ir/
 Also you can add settings for your database or use default settings from .env_smple
 
 
-## Getting access
+## Getting admin access
 <hr>
 
 You can use following:
 - superuser:
   - Username: admin
-  - Password: 12345
+  - Password: admin12345
 
 Or create another one by yourself:
 - create user via Admin panel /admin/
 
 ## Places API allows:
 
-- via api/admin/ --- Work with admin panel
+- via /api/admin/ --- Work with admin panel
 - via /api/doc/swagger/ --- Detail api documentation by swagger
 - via [POST] /api/places/ --- Add new place
 - via [GET] /api/places/ --- Places list
