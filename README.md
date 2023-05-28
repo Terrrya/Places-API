@@ -35,8 +35,9 @@ Open in browser 127.0.0.1:8000/api/
 ## Filling .env file
 <hr>
 
-To fill .env file you have to get Django secret key, for example from https://djecrety.ir/ Also you can add settings
-for your database or use default settings:
+To fill .env file you have to use .env_smple as example.
+To get Django secret key u can use https://djecrety.ir/ 
+Also you can add settings for your database or use default settings from .env_smple
 
 
 ## Getting access
