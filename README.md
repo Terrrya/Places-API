@@ -21,7 +21,7 @@ them all.
 Docker should be installed
 
 ```python
-https://github.com/Terrrya/test-gis
+git clone https://github.com/Terrrya/test-gis
 cd test-gis
 ```
 
@@ -53,7 +53,7 @@ Or create another one by yourself:
 
 ## Places API allows:
 
-- via api/admin/ --- Work with admin panel
+- via /api/admin/ --- Work with admin panel
 - via /api/doc/swagger/ --- Detail api documentation by swagger
 - via [POST] /api/places/ --- Add new place
 - via [GET] /api/places/ --- Places list
