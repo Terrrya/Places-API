@@ -21,8 +21,8 @@ them all.
 Docker should be installed
 
 ```python
-git clone https://github.com/Terrrya/test-gis
-cd test-gis
+git clone https://github.com/Terrrya/Places-API
+cd Places-API
 ```
 
 Create in root directory of project and fill .env file as shown in .env_sample file
