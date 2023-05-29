@@ -2,8 +2,8 @@
 <hr>
 
 API service for managing places. You can search nearest place by coordinates. If it will two or more places you get 
-them all.
-
+all of them.
+<br>You can see video presentation by this [link](https://www.loom.com/share/4fd18fb77fc24f868392fdab75b7a6ac)
 ## Features:
 <hr>
 
@@ -37,7 +37,7 @@ Open in browser 127.0.0.1:8000/api/
 
 To fill .env file you have to use .env_smple as example.
 To get Django secret key you can use https://djecrety.ir/ 
-Also you can add settings for your database or use default settings from .env_smple
+Also you can add settings for your database or use default settings from .env_sample
 
 
 ## Getting admin access
