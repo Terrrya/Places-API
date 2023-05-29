@@ -32,7 +32,7 @@ class PlaceViewSet(viewsets.ModelViewSet):
     serializer_class = PlaceSerializer
 
     @staticmethod
-    def _params_to_point(self, string: str) -> Point:
+    def _params_to_point(string: str) -> Point:
         """
         Function get string with coordinates and transform it in Point
         """
